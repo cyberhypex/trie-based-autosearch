@@ -1,12 +1,10 @@
 // @ts-nocheck
-
 class TrieNode {
     constructor() {
         this.children = {};
         this.isEnd = false;
     }
 }
-
 class TrieImplementation {
     constructor() {
         this.root = new TrieNode();
@@ -33,7 +31,7 @@ class TrieImplementation {
         this._dfs(nodeOfPrefix, prefix, resultsOfPrefixMatching);
         return resultsOfPrefixMatching;
     }
-    
+
     _dfs(nodeToSearchDown, prefix, resultsObject) {
         if (resultsObject.length >= 10) return;
         if (nodeToSearchDown.isEnd) {
@@ -45,7 +43,7 @@ class TrieImplementation {
     }
 }
 
-
+//storing of default words for predicting beforehand
 const STORAGE_KEY = "search_predictions";
 const preDefinedWords = ["apple", "ball", "cat", "dog", "elephant", "fan", "google", "hindi", "iris", "jelly"];
 let storedDeafultWords = JSON.parse(localStorage.getItem(STORAGE_KEY)) || preDefinedWords.slice();
@@ -54,6 +52,7 @@ const trie = new TrieImplementation();
 storedDeafultWords.forEach(word => trie.insert(word.toLowerCase()));
 
 
+//working on the funcitonality of the UI
 const inputFromUser = document.getElementById("searchBox");
 const suggestionForNextWords = document.getElementById("suggestions");
 
